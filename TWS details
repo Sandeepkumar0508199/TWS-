@@ -1,0 +1,5 @@
+Hi TDR Team,
+We have successfully set up the new TWS automated trigger for Master PL Two A to B pipeline. Since this is now working correctly, we need to discontinue the existing manual trigger process to avoid duplicate runs.
+Please stop triggering PL Notify CCams - this will automatically stop the chain that triggers PL TDR Request and subsequently Master PL Two A to B.
+Going forward, TWS will handle the pipeline triggering automatically after EBS job completion. Let me know once you've disabled the trigger from your end.
+Thanks!
