@@ -3,3 +3,54 @@ We have successfully set up the new TWS automated trigger for Master PL Two A to
 Please stop triggering PL Notify CCams - this will automatically stop the chain that triggers PL TDR Request and subsequently Master PL Two A to B.
 Going forward, TWS will handle the pipeline triggering automatically after EBS job completion. Let me know once you've disabled the trigger from your end.
 Thanks!
+
+My Tasks for Current Phase
+Pipeline Development:
+
+Build the main data pipeline in Azure
+Connect it to our trading data sources
+Set up automatic data processing
+Add error handling when things go wrong
+
+Data Processing Setup:
+
+Configure Databricks for fraud detection
+Set up the analysis notebooks
+Test the alert generation system
+
+Database Configuration:
+
+Verify our data tables are ready
+Test stored procedures
+Make sure alerts save properly
+
+Security Implementation:
+
+Set up secure connections
+Manage passwords safely
+Control who can access what
+
+Testing & Validation:
+
+Run tests to make sure everything works
+Check data quality
+Verify alerts trigger correctly
+
+My Work for September Phase
+Data Integration:
+
+Add new trading data feeds
+Handle overlapping data properly
+Scale up for more volume
+
+System Monitoring:
+
+Set up performance monitoring
+Track system health
+Fine-tune alert settings
+
+What I Need to Get Started:
+
+Azure access permissions
+Database connections
+Security approvals
