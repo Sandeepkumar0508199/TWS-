@@ -54,3 +54,5 @@ What I Need to Get Started:
 Azure access permissions
 Database connections
 Security approvals
+
+Just checking — since the EBS job has already run today and was marked as successful (even though it failed in ADF), can TWS run it again today to test the updated failure scenario? Or will it skip re-running because the job already triggered once?
