@@ -56,3 +56,32 @@ Database connections
 Security approvals
 
 Just checking — since the EBS job has already run today and was marked as successful (even though it failed in ADF), can TWS run it again today to test the updated failure scenario? Or will it skip re-running because the job already triggered once?
+Hi [TDR Team / Name],
+
+Quick question regarding the EBS job behavior:
+
+What happens if there is no file received from upstream? Does the EBS job fail, show as completed, or stay in progress?
+
+If a file is received but it has no data (empty file), will the EBS job still show as successful, and will it still trigger the analytics pipeline?
+
+Just trying to understand how the job behaves in these scenarios for proper handling on our side. Let me know when you get a chance. Thanks!
+
+How often does the EBS file get delayed?
+
+Is it a frequent issue or only occasional?
+
+By what time is the file typically received?
+
+If the file is delayed and processed later in the day:
+
+Will the TDR team inform us once it’s successfully processed?
+
+Should we plan to manually rerun only the impacted T-1 analytics jobs (e.g., spoofing) afterward?
+
+Does this approach sound reasonable to you?
+
+If the EBS job hasn’t completed by 10:00 AM, we’ll go ahead and trigger the analytics pipeline manually.
+
+Later, we’ll rerun only the impacted T-1 pipelines once the file is received and processed.
+
+Let us know your thoughts. Thanks again!
