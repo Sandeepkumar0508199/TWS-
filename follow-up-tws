@@ -1,0 +1,25 @@
+Thank you for your continued support in integrating with TWS. Based on recent discussions with our team , we have a few important clarifications we’re hoping to get your insights on:
+
+TWS Trigger Mechanism
+
+Can you please confirm how TWS triggers pipeline execution?
+Is it event-based or schedule-based?
+
+#Scenario-Based Clarification
+1) Case: No File Received Initially
+We understand that when a file is not available, TDR still triggers the pipeline and notifies TWS. TWS, in turn, runs the job and marks it as successful, 
+even though the actual file was missing.
+
+1.1)Later, when the missing file becomes available, the TDR job is retriggered and sends another notification to TWS.
+
+Question:
+In this case, where TWS already marked the earlier job as successful, how will TWS handle the second trigger?
+Will TWS run the job again, even though it already succeeded earlier in the day?
+Or does TWS have logic to ignore duplicate triggers or re-runs for the same job ID/date if it already succeeded?
+
+We want to avoid duplicate processing of the same data. If TDR re-triggers the job later in the day when the file becomes available, 
+we need to be sure that TWS does not reprocess it unnecessarily unless it’s explicitly intended.
+
+Clarity on this behavior will help us document it correctly and avoid any re-processing or data duplication issues.
+
+Looking forward to your guidance.
