@@ -85,3 +85,116 @@ If the EBS job hasn’t completed by 10:00 AM, we’ll go ahead and trigger the 
 Later, we’ll rerun only the impacted T-1 pipelines once the file is received and processed.
 
 Let us know your thoughts. Thanks again!
+
+
+Absolutely! Here's a **refined and validated list of questions** after cross-checking with:
+
+* 🗣️ Your **meeting notes**
+* 📸 Your **screenshot**
+* ✅ Logical consistency and clarity for stakeholders (TDR team, ops, etc.)
+
+Each question is **grouped by theme** and verified to be **relevant, non-redundant**, and **actionable**.
+
+---
+
+## ✅ Final Cross-Checked & Validated EBS Job Behavior Questions
+
+---
+
+### 🔹 1. Upstream File Behavior
+
+1. What happens if there is **no file received** from upstream?
+
+   * Does the EBS job **fail**, remain **in progress**, or **show as completed**?
+
+2. If a file is received but contains **no data** (i.e., an empty file):
+
+   * Will the EBS job still **show as successful**?
+   * Will this **trigger the analytics pipeline**?
+
+3. If the file is only **partially received** (incomplete data):
+
+   * Will the job still show as **Succeeded**?
+   * Is there any mechanism to **flag partial loads**?
+
+4. How is the **EBS job status reflected** in the `TDRLoadStatusView`?
+
+   * Does it change only upon **completion**, or also after **upstream validation**?
+
+---
+
+### 🔹 2. Delay & Timeliness
+
+5. How often does the **EBS file get delayed**?
+
+6. Is EBS file delay a **frequent issue** or only **occasional**?
+
+7. By what **time is the file typically received** on successful days?
+
+8. Are there **specific upstream sources** responsible for delays more often?
+
+9. Can we get **historical stats** on how many times the EBS job was:
+
+   * Delayed
+   * Failed
+   * Took longer than expected to complete?
+
+---
+
+### 🔹 3. Notification & Coordination
+
+10. If the file is delayed and processed later:
+
+* Will the **TDR team notify us** once it has been successfully processed?
+
+11. Can we get a **standardized status or flag** to distinguish:
+
+* No file received
+* File received but empty
+* File received partially
+* Job failed
+
+12. If the EBS job completes successfully, but `LoadStatus` is **not updated** in time:
+
+* Should we wait, or is there a **secondary confirmation mechanism**?
+
+---
+
+### 🔹 4. Triggering the Analytics Pipeline
+
+13. If the EBS job hasn’t completed by **10:00 AM**:
+
+* Can we go ahead and **trigger the analytics pipeline manually** to avoid blocking others?
+
+14. Can we define a **fallback trigger time** (e.g., 10:00 AM) to bypass dependency checks and allow partial pipeline execution?
+
+15. Should **TWS or ADF** include a **retry/polling mechanism** to check EBS job status every few minutes between 9:00–10:00 AM?
+
+---
+
+### 🔹 5. Manual Rerun & Support
+
+16. Once the EBS job completes **after the fallback time**:
+
+* Should we **manually rerun only the impacted T-1 analytics jobs** (e.g., spoofing FX)?
+
+17. Should we create a **clear SOP or playbook** for production support:
+
+* When EBS is delayed or fails
+* How to rerun affected pipelines
+* Who is responsible
+
+18. Can we document an **alerting mechanism** for production support to notify teams when manual rerun is needed?
+
+---
+
+### 🔹 6. LoadStatus Field Reliability
+
+19. Is the `LoadStatus='Succeeded'` value in `TDRLoadStatusView` always a **reliable trigger** for downstream jobs?
+
+20. What are the **possible values** for `LoadStatus`, and what do they each **indicate**?
+
+---
+
+Let me know if you'd like these added to a **Google Doc**, **Confluence page**, or formatted into an **email** for sharing with your team or TDR stakeholders.
+
