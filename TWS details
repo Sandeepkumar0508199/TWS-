@@ -194,7 +194,35 @@ Each question is **grouped by theme** and verified to be **relevant, non-redunda
 
 20. What are the **possible values** for `LoadStatus`, and what do they each **indicate**?
 
----
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 Let me know if you'd like these added to a **Google Doc**, **Confluence page**, or formatted into an **email** for sharing with your team or TDR stakeholders.
+If the EBS file is only partially received, will the job still show as successful?
+
+Is there any way to detect or flag when a partial file has been processed?
+
+How is the EBS job status reflected in the TDR load status view? Does it update only after completion, or does it account for upstream validation as well?
+
+How often do we see delays with the EBS file? Is this something that happens regularly or just once in a while?
+
+On days when everything runs smoothly, by what time is the EBS file usually received and processed?
+
+Are there any particular upstream systems that tend to cause delays more often than others?
+
+If the file gets delayed but is eventually processed, will someone from the TDR team notify us when it's ready?
+
+Can we get a clear status indicator that tells us whether the file was empty, partial, or failed — so we know how to handle it downstream?
+
+If the EBS job completes successfully but the load status hasn’t been updated in time, should we wait for it, or is there a backup way to confirm that it’s done?
+
+If the EBS job still hasn’t completed by 10:00 AM, should we go ahead and trigger the analytics pipeline anyway to avoid blocking everything else?
+
+Would it make sense to set a fallback time — like 10:00 AM — to automatically trigger the analytics pipeline if the EBS job hasn’t finished?
+
+Instead of a fixed time, can we add a polling mechanism that checks the EBS job status every few minutes between 9:00 and 10:00 AM?
+
+If the EBS job completes after our fallback time, is it okay to manually rerun just the affected pipelines — like spoofing FX — instead of the full batch?
+
+Do we need to define a clear SOP for production support in case the EBS job fails or is delayed? Who should be responsible for triggering reruns in those cases?
+
 
