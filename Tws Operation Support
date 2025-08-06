@@ -1,0 +1,10 @@
+Hey Venkat, quick clarification on the operations support side —
+
+Who from the operations team is responsible for monitoring TWS jobs?
+
+In case of a job failure, will the operations team handle the rerun, or will they just notify us (the dev team)?
+
+Do they require any KT or documentation from our side to manage reruns and failures?
+
+Are they fully onboarded and ready to support this flow in production?”
+
