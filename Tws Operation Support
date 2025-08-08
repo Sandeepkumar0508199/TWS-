@@ -12,3 +12,76 @@ SELECT definition
 FROM sys.sql_modules 
 WHERE object_id = OBJECT_ID('[dbo].[sp_CheckTDRLoadstatusview]')
 
+
+Original Procedure:
+
+CREATE procedure [dbo].[sp_CheckTDRLoadstatusview] ( @lv_batchid int ) As begin
+set nocount on
+
+DECLARE @TMinus2batchid int = @lv_batchid;
+DECLARE @TMinus1batchid int = dbo.udf_businessdate();
+DECLARE @Today date = cast(getdate() as date)
+
+DECLARE @Count1 int;
+DECLARE @Count2 int;
+DECLARE @Count3 int;
+
+-- T-2 Status Check
+select @Count1 = count(*) from tdrloadstatusview
+where batchid = @TMinus2batchid and loadstatus <> 'Failed'
+and LoadName in (select venue from LoadStatusCheckConfig where batchtype='T2');
+
+-- T-1 Status Check  
+select @Count2 = count(*) from tdrloadstatusviewt1
+where batchid = @TMinus1batchid and loadstatus <> 'Failed'
+and LoadName in (select venue from LoadStatusCheckConfig where batchtype='T1');
+
+-- Daily Trigger Check
+select @Count3 = count(*) from CCAMSAutoTriggerLog where createdon = @Today
+
+-- Final Decision
+if @Count1 = 13 and @Count2 > (select count(*) -1 from LoadStatusCheckConfig where batchtype='T1') and @Count3 = 0
+    select 'TRUE' As Result;
+else
+    select 'FALSE' As Result;
+END;
+
+########################
+Modified Procedure Per Your Requirements:
+##########################
+
+CREATE PROCEDURE [dbo].[sp_T2DependencyValidator] ( @lv_batchid int )
+AS
+BEGIN
+    SET NOCOUNT ON
+
+    DECLARE @TMinus2batchid int = @lv_batchid;
+    DECLARE @Today date = CAST(GETDATE() AS date);
+   
+    DECLARE @Count1 int;
+    DECLARE @Count3 int;
+
+    -- T-2 Status Check
+    SELECT @Count1 = COUNT(*)
+    FROM tdrloadstatusview
+    WHERE batchid = @TMinus2batchid
+      AND loadstatus <> 'Failed'
+      AND LoadName IN (
+          SELECT venue
+          FROM LoadStatusCheckConfig
+          WHERE batchtype = 'T2'
+      );
+
+    -- Daily Trigger Check
+    SELECT @Count3 = COUNT(*)
+    FROM CCAMSAutoTriggerLog
+    WHERE createdon = @Today;
+
+    -- Modified Decision Logic (Removed @Count2)
+    IF @Count1 = 13 AND @Count3 = 0
+        SELECT 'TRUE' AS Result;
+    ELSE
+        SELECT 'FALSE' AS Result;
+       
+END;
+
