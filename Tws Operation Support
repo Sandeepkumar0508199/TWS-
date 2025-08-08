@@ -8,3 +8,7 @@ Do they require any KT or documentation from our side to manage reruns and failu
 
 Are they fully onboarded and ready to support this flow in production?”
 
+SELECT definition 
+FROM sys.sql_modules 
+WHERE object_id = OBJECT_ID('[dbo].[sp_CheckTDRLoadstatusview]')
+
