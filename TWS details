@@ -225,4 +225,7 @@ If the EBS job completes after our fallback time, is it okay to manually rerun j
 
 Do we need to define a clear SOP for production support in case the EBS job fails or is delayed? Who should be responsible for triggering reruns in those cases?
 
+THROW
+50000, TDR Load conditions not met - Pipeline terminated', 1;
+
 
