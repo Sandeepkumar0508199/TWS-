@@ -117,3 +117,14 @@ This is correct, because that’s the SQL Server connection where the THROW 5000
 Failure Activity after Script:
 Yes — there is a Fail activity (Fail1) immediately after the Script in the False branch.
 This explicitly marks the pipeline run as Failed in ADF monitoring, in addition to the Script error.
+
+
+Chitra needs the following info to add the failure notification in the PL_notify_Ccams pipeline:
+
+Recipient email IDs – Who should get the failure alert.
+
+Email subject line – Clear and short, e.g., "TDR Load Failure – Pipeline Not Triggered".
+
+Pipeline name(s) – The exact pipeline name(s) to include in the notification.
+
+Any specific message/body text – If we want a custom failure message besides the default.
