@@ -85,3 +85,35 @@ If the EBS job hasn’t completed by 10:00 AM, we’ll go ahead and trigger the 
 Later, we’ll rerun only the impacted T-1 pipelines once the file is received and processed.
 
 Let us know your thoughts. Thanks again!
+
+Here’s the same thing in a simpler, plain form you can just share or say:
+
+---
+
+**Update:**
+I have added a new step in the **If Condition → False** branch so the pipeline will fail when the load count does not match the expected count.
+
+* If the counts **match** → the True branch runs as before, triggering analytics and completing successfully.
+* If the counts **do not match** → the False branch runs a SQL script:
+
+  ```sql
+  THROW 50000, 'TDR Load conditions not met - Pipeline terminated', 1;
+  ```
+
+  which forces the pipeline to fail.
+* This change makes sure TWS will not trigger downstream jobs when conditions are not met.
+
+**Next step:**
+Add this same False branch failure step in TDR’s **`PL_notify_Ccams`** pipeline. The True branch in TDR remains the same.
+
+**Testing:**
+
+* I tested in Ccams by making the counts match (pipeline succeeded) and by making them different (pipeline failed). Both behaved as expected.
+
+Linked Service:
+The Script activity in the False branch is linked to LS_TDRSqlServer.
+This is correct, because that’s the SQL Server connection where the THROW 50000… statement will run.
+
+Failure Activity after Script:
+Yes — there is a Fail activity (Fail1) immediately after the Script in the False branch.
+This explicitly marks the pipeline run as Failed in ADF monitoring, in addition to the Script error.
