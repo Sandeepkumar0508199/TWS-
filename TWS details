@@ -128,3 +128,9 @@ Email subject line – Clear and short, e.g., "TDR Load Failure – Pipeline Not
 Pipeline name(s) – The exact pipeline name(s) to include in the notification.
 
 Any specific message/body text – If we want a custom failure message besides the default.
+
+Hi Chitra,
+
+Thank you for taking the time to add the changes. We have reviewed the pipeline.
+Could you please add a failure notification to the Teams channel?
+Also, would it be possible to grant contributor access in REL s
