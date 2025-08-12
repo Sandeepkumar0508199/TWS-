@@ -138,4 +138,16 @@ Also, would it be possible to grant contributor access in REL s
 Here’s the full rephrased sentence for you:
 
 **"Hi Chitra, thank you for taking the time to make the changes. We have checked the pipeline — is it possible to add failure notifications to the Teams channel? Also, is it possible to grant contributor access in REL so we can create our own branch and test the pipeline for both success and failure scenarios?"**
+Here’s the updated version with “working with Chitra” phrased naturally:
+
+---
+
+**Hi Sri,**
+Chitra mentioned your good name to reach out to you. I am currently working with her on testing pipelines for both **success** and **failure** scenarios related to some of the **T-2 data loads**. Could you please grant me *Contributor* access to **TDR REL** so I can create a branch and perform the required testing?
+
+Thank you.
+
+---
+
+Do you want me to also make a **short Teams-friendly version** for quick messaging?
 
