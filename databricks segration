@@ -1,0 +1,19 @@
+Final Email to Matt (Clean Version)
+
+Subject: Request for High-Level Cost Analysis – COMS Monitoring Use Case in CPAD (EAI:12087)
+
+Hi Matt,
+
+Hope you're doing well.
+
+I'm working with Harsha on onboarding the COMS monitoring use case into the existing CPAD Databricks workspace (EAI:12087). This use case focuses on evaluating LLM-generated output against COMS voice data, and we are utilizing the existing Databricks environment without provisioning new infrastructure.
+
+Could you help with a high-level cost analysis to understand:
+
+The impact of new components introduced for this use case
+
+Any additional load this may place on existing shared resources (compute, storage, etc.)
+
+Please let me know if you need further details or if someone else would be the right contact.
+
+Thanks,
