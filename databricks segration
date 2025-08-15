@@ -17,3 +17,20 @@ Any additional load this may place on existing shared resources (compute, storag
 Please let me know if you need further details or if someone else would be the right contact.
 
 Thanks,
+
+Hi Matt,
+
+Hope you're doing well.
+
+I'm working with Harsha on onboarding the COMS monitoring use case into the existing CPAD Databricks workspace (EAI:12087). This use case involves evaluating LLM-generated output against COMS voice data using shared resources — no new workspace is being provisioned.
+
+Stephen mentioned your name as the right person to reach out to for a high-level cost analysis, specifically to understand:
+
+The cost impact of the new components introduced for this use case
+
+Any additional load this may place on shared compute, storage, or other platform resources
+
+Please let me know if you need more context or details.
+
+Thanks,
+Sandeep
